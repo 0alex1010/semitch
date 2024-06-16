@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fullscreen Button</title>
+</head>
+<body>
+  <button id="fullscreen-button">Enter Fullscreen</button>
+
+  <script>
+    const button = document.getElementById('fullscreen-button');
+    const element = document.documentElement;
+
+    button.addEventListener('click', () => {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+        button.textContent = 'Exit Fullscreen';
+      } else if (element.webkitRequestFullscreen) { /* Safari */
+        element.webkitRequestFullscreen();
+        button.textContent = 'Exit Fullscreen';
+      } else if (element.mozRequestFullScreen) { /* Firefox */
+        element.mozRequestFullScreen();
+        button.textContent = 'Exit Fullscreen';
+      } else {
+        alert("Fullscreen is not supported by your browser.");
+      }
+    });
+  </script>
+</body>
+</html>
